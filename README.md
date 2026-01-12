@@ -54,8 +54,8 @@
 ### 从本地安装
 1. 克隆或下载此仓库
 2. 在 VSCode 中按 `F5` 启动扩展开发主机
-3. 或者运行 `npm install` 安装依赖
-4. 运行 `npm run compile` 编译插件
+3. 或者运行 `pnpm install` 安装依赖
+4. 运行 `pnpm run compile` 编译插件
 5. 使用 `vsce package` 打包为 `.vsix` 文件
 6. 在 VSCode 中通过 "Install from VSIX..." 安装
 
@@ -89,22 +89,22 @@ struct Index {
 
 ### 环境要求
 - Node.js >= 14.x
-- npm >= 6.x
+- pnpm >= 7.x
 - VSCode >= 1.74.0
 
 ### 安装依赖
 ```bash
-npm install
+pnpm install
 ```
 
 ### 编译
 ```bash
-npm run compile
+pnpm run compile
 ```
 
 ### 监听模式
 ```bash
-npm run watch
+pnpm run watch
 ```
 
 ### 调试
