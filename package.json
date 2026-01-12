@@ -1,11 +1,15 @@
 {
   "name": "better-arkts",
   "displayName": "Better ArkTS Syntax Highlighting",
-  "description": "ArkTS 语法高亮支持插件，为 HarmonyOS/OpenHarmony 开发提供语法高亮功能",
+  "description": "(非官方) ArkTS 语法高亮支持插件，为 HarmonyOS/OpenHarmony 开发提供语法高亮功能",
   "version": "0.0.1",
   "publisher": "cloris",
+    "icon": "icons/arkts_icon.png",
   "engines": {
     "vscode": "^1.74.0"
+  },
+  "sponsor": {
+    "url": "https://github.com/sponsors/1595901624"
   },
   "repository": {
     "url": "https://github.com/1595901624/better-arkts"
@@ -32,6 +36,11 @@
         "extensions": [
           ".ets"
         ],
+        "icon": {
+          "id": "arkts-icon",
+          "light": "./icons/ets.svg",
+          "dark": "./icons/ets.svg"
+        },
         "configuration": "./language-configuration.json"
       }
     ],

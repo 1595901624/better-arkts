@@ -1,6 +1,6 @@
 # Batter ArkTS 语法高亮插件
 
-为 VSCode 提供 ARKTS 语言语法高亮支持的插件。
+(非官方)为 VSCode 提供 ARKTS 语言语法高亮支持的插件。
 
 ## 功能特性
 
