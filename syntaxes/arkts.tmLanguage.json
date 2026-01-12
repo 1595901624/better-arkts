@@ -77,7 +77,7 @@
         },
         {
           "name": "keyword.declaration.arkts",
-          "match": "\\b(let|const|var|function|class|interface|enum|struct|type|import|export|from|default|as|new|this|super|extends|implements)\\b"
+          "match": "\\b(let|const|var|function|class|interface|enum|struct|type|import|export|from|default|as|new|this|super|extends|implements|lazy)\\b"
         },
         {
           "name": "keyword.operator.arkts",

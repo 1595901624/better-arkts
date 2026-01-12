@@ -6,7 +6,7 @@
 
 // 导入语句
 import { Component, State } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
+import lazy { BusinessError } from '@kit.BasicServicesKit';
 
 // 装饰器测试
 @Entry
