@@ -1,0 +1,7 @@
+/plans
+/out
+/node_modules
+/.vscode-test
+/.DS_Store
+/*.log
+*.vsix

@@ -1,0 +1,255 @@
+{
+  "scopeName": "source.arkts",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#decorators"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#types"
+    },
+    {
+      "include": "#functions"
+    },
+    {
+      "include": "#variables"
+    },
+    {
+      "include": "#operators"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.arkts",
+          "match": "//.*$",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.comment.arkts"
+            }
+          }
+        },
+        {
+          "name": "comment.block.arkts",
+          "begin": "/\\*",
+          "end": "\\*/",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.comment.arkts"
+            }
+          }
+        }
+      ]
+    },
+    "decorators": {
+      "patterns": [
+        {
+          "name": "meta.decorator.arkts",
+          "match": "(@)([a-zA-Z_][a-zA-Z0-9_]*)",
+          "captures": {
+            "1": {
+              "name": "punctuation.decorator.arkts"
+            },
+            "2": {
+              "name": "entity.name.function.decorator.arkts"
+            }
+          }
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.arkts",
+          "match": "\\b(if|else|for|while|do|switch|case|break|continue|return|try|catch|finally|throw|default)\\b"
+        },
+        {
+          "name": "keyword.declaration.arkts",
+          "match": "\\b(let|const|var|function|class|interface|enum|struct|type|import|export|from|default|as|new|this|super|extends|implements)\\b"
+        },
+        {
+          "name": "keyword.operator.arkts",
+          "match": "\\b(typeof|instanceof|in|of|async|await)\\b"
+        },
+        {
+          "name": "keyword.other.arkts",
+          "match": "\\b(true|false|null|undefined|void)\\b"
+        },
+        {
+          "name": "storage.modifier.arkts",
+          "match": "\\b(public|private|protected|static|readonly|abstract)\\b"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.single.arkts",
+          "begin": "'",
+          "end": "'",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.arkts"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.arkts"
+            }
+          }
+        },
+        {
+          "name": "string.quoted.double.arkts",
+          "begin": "\"",
+          "end": "\"",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.arkts"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.arkts"
+            }
+          }
+        },
+        {
+          "name": "string.quoted.template.arkts",
+          "begin": "`",
+          "end": "`",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.arkts"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.arkts"
+            }
+          },
+          "patterns": [
+            {
+              "name": "constant.character.escape.arkts",
+              "match": "\\\\."
+            },
+            {
+              "name": "source.js.embedded.arkts",
+              "match": "\\$\\{",
+              "captures": {
+                "0": {
+                  "name": "punctuation.section.embedded.begin.arkts"
+                }
+              },
+              "push": [
+                {
+                  "name": "source.js.embedded.arkts",
+                  "match": "\\}",
+                  "captures": {
+                    "0": {
+                      "name": "punctuation.section.embedded.end.arkts"
+                    }
+                  },
+                  "pop": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.arkts",
+          "match": "\\b(0[xX][0-9a-fA-F]+|0[bB][01]+|0[oO][0-7]+|\\d+(\\.\\d+)?([eE][+-]?\\d+)?)\\b"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "support.type.primitive.arkts",
+          "match": "\\b(string|number|boolean|void|any|never|unknown|object|symbol|bigint)\\b"
+        },
+        {
+          "name": "support.type.class.arkts",
+          "match": "\\b(Array|Map|Set|Promise|Function|Date|RegExp|Error|Math|JSON|Object)\\b"
+        },
+        {
+          "name": "entity.name.type.arkts",
+          "match": "\\b[A-Z][a-zA-Z0-9_]*\\b"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "meta.function.arkts",
+          "match": "(?<!\\w)([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=\\()",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.arkts"
+            }
+          }
+        },
+        {
+          "name": "meta.function-arrow.arkts",
+          "match": "(?<=\\s|\\(|\\[|\\{|,|;)([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=\\s*=>)",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.arkts"
+            }
+          }
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "name": "variable.other.readwrite.arkts",
+          "match": "\\b[a-z_][a-zA-Z0-9_]*\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.arithmetic.arkts",
+          "match": "\\+|\\-|\\*|\\/|%|\\*\\*"
+        },
+        {
+          "name": "keyword.operator.comparison.arkts",
+          "match": "==|!=|===|!==|<|>|<=|>="
+        },
+        {
+          "name": "keyword.operator.logical.arkts",
+          "match": "&&|\\|\\||!"
+        },
+        {
+          "name": "keyword.operator.assignment.arkts",
+          "match": "=|\\+=|\\-=|\\*=|/=|%=|<<=|>>=|&=|\\|=|\\^="
+        },
+        {
+          "name": "keyword.operator.bitwise.arkts",
+          "match": "&|\\||\\^|~|<<|>>"
+        },
+        {
+          "name": "keyword.operator.ternary.arkts",
+          "match": "\\?|:"
+        }
+      ]
+    }
+  }
+}
