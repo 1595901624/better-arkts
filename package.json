@@ -1,10 +1,10 @@
 {
   "name": "better-arkts",
   "displayName": "Better ArkTS Syntax Highlighting",
-  "description": "(非官方) ArkTS 语法高亮支持插件，为 HarmonyOS/OpenHarmony 开发提供语法高亮功能，同时支持 JSON5 和 JSONC 语法",
+  "description": "(非官方) ArkTS 语法高亮支持插件，为 HarmonyOS/OpenHarmony 开发提供语法高亮功能，同时支持 JSON5 语法",
   "version": "0.0.3",
   "publisher": "cloris",
-    "icon": "icons/arkts_icon.png",
+  "icon": "icons/arkts_icon.png",
   "engines": {
     "vscode": "^1.74.0"
   },
@@ -51,9 +51,13 @@
           "json5"
         ],
         "extensions": [
-          ".json5",
-          ".jsonc"
+          ".json5"
         ],
+        "icon": {
+          "id": "json5-icon",
+          "light": "./icons/json5.svg",
+          "dark": "./icons/json5.svg"
+        },
         "configuration": "./language-configuration-json5.json"
       }
     ],
@@ -80,8 +84,7 @@
     },
     "files.associations": {
       "*.ets": "arkts",
-      "*.json5": "json5",
-      "*.jsonc": "json5"
+      "*.json5": "json5"
     }
   },
   "activationEvents": [
