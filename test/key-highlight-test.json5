@@ -1,0 +1,33 @@
+{
+  // 非字符串 key - 应该显示为蓝色
+  unquotedKey: "value",
+  anotherKey: 123,
+  
+  // 双引号字符串 key - 应该也显示为蓝色
+  "quotedKey": "value",
+  "anotherQuotedKey": 456,
+  "key-with-dash": "value",
+  "key with spaces": "value",
+  "key\"with\\escape": "value",
+  
+  // 单引号字符串 key - 应该也显示为蓝色
+  'singleQuotedKey': "value",
+  'anotherSingleQuotedKey': 789,
+  'key\'with\\escape': "value",
+  
+  // 混合使用
+  mixedKeys: {
+    unquoted: "value",
+    "quoted": "value",
+    'single': "value"
+  },
+  
+  // 值中的字符串 - 应该是字符串颜色（橙色/绿色）不是蓝色
+  stringValue: "this is a value, not a key",
+  
+  // 数组中的字符串 - 应该是字符串颜色
+  arrayValue: [
+    "string in array",
+    'single quoted string in array'
+  ]
+}

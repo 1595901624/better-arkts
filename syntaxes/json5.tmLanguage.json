@@ -5,10 +5,10 @@
       "include": "#comments"
     },
     {
-      "include": "#strings"
+      "include": "#keys"
     },
     {
-      "include": "#keys"
+      "include": "#strings"
     },
     {
       "include": "#numbers"
@@ -109,20 +109,20 @@
       "patterns": [
         {
           "name": "support.type.property-name.json5",
-          "match": "(?<=\\s|^)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\\s*:)"
+          "match": "(?<=\\s|^|,|\\{)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\\s*:)"
         },
         {
-          "name": "meta.key.json5",
-          "begin": "\"",
-          "end": "\"(?=\\s*:)",
+          "name": "string.quoted.double.json5 support.type.property-name.json5",
+          "begin": "\"(?=(?:[^\"\\\\]|\\\\.)*\"\\s*:)",
+          "end": "\"",
           "beginCaptures": {
             "0": {
-              "name": "punctuation.definition.string.begin.json5"
+              "name": "punctuation.support.type.property-name.begin.json5"
             }
           },
           "endCaptures": {
             "0": {
-              "name": "punctuation.definition.string.end.json5"
+              "name": "punctuation.support.type.property-name.end.json5"
             }
           },
           "patterns": [
@@ -133,17 +133,17 @@
           ]
         },
         {
-          "name": "meta.key.json5",
-          "begin": "'",
-          "end": "'(?=\\s*:)",
+          "name": "string.quoted.single.json5 support.type.property-name.json5",
+          "begin": "'(?=(?:[^'\\\\]|\\\\.)*'\\s*:)",
+          "end": "'",
           "beginCaptures": {
             "0": {
-              "name": "punctuation.definition.string.begin.json5"
+              "name": "punctuation.support.type.property-name.begin.json5"
             }
           },
           "endCaptures": {
             "0": {
-              "name": "punctuation.definition.string.end.json5"
+              "name": "punctuation.support.type.property-name.end.json5"
             }
           },
           "patterns": [
