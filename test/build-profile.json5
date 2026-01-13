@@ -4,7 +4,7 @@
     "arkOptions": {
       "runtimeOnly": {
         "sources": [
-          "./src/main/ets/LowPriorityLoader.ets",
+          "./src/main/ets/Example.ets",
         ]
       }
       // "apPath": "./modules.ap"  /* Profile used for profile-guided optimization (PGO), a compiler optimization technique to improve app runtime performance. */
