@@ -1,0 +1,66 @@
+{
+  // 这是一个 JSON5 测试文件
+  // 支持单行注释
+
+  /*
+   * 支持多行注释
+   * JSON5 是 JSON 的扩展
+   */
+
+  // 键可以不用引号
+  name: "JSON5 Test",
+  version: 1.0,
+  
+  // 支持尾随逗号
+  keywords: [
+    "json5",
+    "syntax",
+    "highlighting",
+  ],
+
+  // 支持单引号字符串
+  description: 'JSON5 语法高亮测试',
+  
+  // 支持多行字符串
+  multiLineString: '''
+    这是一个
+    多行字符串
+    示例
+  ''',
+
+  // 支持十六进制、八进制、二进制数字
+  hexNumber: 0xFF,
+  octalNumber: 0o755,
+  binaryNumber: 0b1010,
+  
+  // 支持浮点数
+  floatNumber: 3.14159,
+  scientific: 1.23e+10,
+
+  // 支持特殊值
+  specialValues: {
+    infinity: Infinity,
+    negativeInfinity: -Infinity,
+    notANumber: NaN,
+  },
+
+  // 嵌套对象
+  config: {
+    enabled: true,
+    settings: {
+      theme: "dark",
+      fontSize: 14,
+    },
+  },
+
+  // 数组混合类型
+  mixedArray: [
+    1,
+    "string",
+    true,
+    null,
+    {
+      nested: "object"
+    },
+  ],
+}
