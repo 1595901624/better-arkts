@@ -23,9 +23,7 @@
     "openharmony",
     "arkui",
     "syntax",
-    "highlighting",
-    "json5",
-    "json"
+    "highlighting"
   ],
   "contributes": {
     "languages": [
@@ -44,21 +42,6 @@
           "dark": "./icons/ets.svg"
         },
         "configuration": "./language-configuration.json"
-      },
-      {
-        "id": "json5",
-        "aliases": [
-          "JSON5",
-          "json5"
-        ],
-        "extensions": [
-          ".json5"
-        ],
-        "filenames": [
-          ".json5",
-          "json5"
-        ],
-        "configuration": "./language-configuration-json5.json"
       }
     ],
     "grammars": [
@@ -66,11 +49,6 @@
         "language": "arkts",
         "scopeName": "source.arkts",
         "path": "./syntaxes/arkts.tmLanguage.json"
-      },
-      {
-        "language": "json5",
-        "scopeName": "source.json5",
-        "path": "./syntaxes/json5.tmLanguage.json"
       }
     ],
     "icons": {
@@ -83,13 +61,11 @@
       }
     },
     "files.associations": {
-      "*.ets": "arkts",
-      "*.json5": "json5"
+      "*.ets": "arkts"
     }
   },
   "activationEvents": [
-    "onLanguage:arkts",
-    "onLanguage:json5"
+    "onLanguage:arkts"
   ],
   "main": "./out/extension.js",
   "scripts": {

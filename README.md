@@ -238,7 +238,6 @@ MIT License
 
 ## 相关链接
 
-- [HarmonyOS 官方文档](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/)
-- [ArkTS 语言指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/arkts-get-started-V5)
-- [ArkUI 组件参考](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/arkui-ts-V5)
+- [ArkTS 语言指南](https://developer.huawei.com/consumer/cn/arkts/)
+- [ArkUI 组件文档](https://developer.huawei.com/consumer/cn/doc/HarmonyOS-Guides/arkui-overview)
 - [JSON5 规范](https://json5.org/)
