@@ -1,7 +1,7 @@
 {
   "name": "better-arkts",
   "displayName": "Better ArkTS Syntax Highlighting",
-  "description": "(非官方) ArkTS 语法高亮支持插件，为 HarmonyOS/OpenHarmony 开发提供语法高亮功能，同时支持 JSON5 语法",
+  "description": "(非官方) ArkTS 语法高亮支持插件，为 HarmonyOS/OpenHarmony 开发提供语法高亮功能，同时支持 JSON5 和 JSONC 语法",
   "version": "0.0.3",
   "publisher": "cloris",
     "icon": "icons/arkts_icon.png",
@@ -23,7 +23,8 @@
     "openharmony",
     "arkui",
     "syntax",
-    "highlighting"
+    "highlighting",
+    "json5"
   ],
   "contributes": {
     "languages": [
@@ -42,6 +43,18 @@
           "dark": "./icons/ets.svg"
         },
         "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "json5",
+        "aliases": [
+          "JSON5",
+          "json5"
+        ],
+        "extensions": [
+          ".json5",
+          ".jsonc"
+        ],
+        "configuration": "./language-configuration-json5.json"
       }
     ],
     "grammars": [
@@ -49,6 +62,11 @@
         "language": "arkts",
         "scopeName": "source.arkts",
         "path": "./syntaxes/arkts.tmLanguage.json"
+      },
+      {
+        "language": "json5",
+        "scopeName": "source.json5",
+        "path": "./syntaxes/json5.tmLanguage.json"
       }
     ],
     "icons": {
@@ -61,11 +79,14 @@
       }
     },
     "files.associations": {
-      "*.ets": "arkts"
+      "*.ets": "arkts",
+      "*.json5": "json5",
+      "*.jsonc": "json5"
     }
   },
   "activationEvents": [
-    "onLanguage:arkts"
+    "onLanguage:arkts",
+    "onLanguage:json5"
   ],
   "main": "./out/extension.js",
   "scripts": {
