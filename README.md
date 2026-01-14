@@ -6,13 +6,14 @@
 
 - ✅ **ArkTS 语法高亮**: 为 ARKTS 代码提供完整的语法高亮
 - ✅ **JSON5 语法高亮**: 为 JSON5 文件提供完整的语法高亮
+- ✅ **测试文件图标支持**: 为 `.test.ets` 测试文件提供独立的绿色图标，便于区分测试文件
 - ✅ **装饰器支持**: 高亮 ArkUI 装饰器（@Entry, @Component, @State 等）
 - ✅ **关键字高亮**: 支持 ARKTS 所有关键字
 - ✅ **类型系统**: 高亮类型、接口、类定义
 - ✅ **字符串和数字**: 支持单引号、双引号、模板字符串和各种数字格式
 - ✅ **注释支持**: 单行注释（//）和多行注释（/* */）
 - ✅ **函数高亮**: 函数声明和调用高亮
-- ✅ **文件关联**: 自动识别 `.ets` 文件为 ARKTS 语言，`.json5` 文件为 JSON5 语言
+- ✅ **文件关联**: 自动识别 `.ets` 文件为 ARKTS 语言，`.test.ets` 文件为 ArkTS 测试语言，`.json5` 文件为 JSON5 语言
 
 ## 支持的语法元素
 
@@ -52,6 +53,16 @@
 - **数字格式**: 支持十六进制 (`0x`)、八进制 (`0o`)、二进制 (`0b`) 和科学计数法
 - **特殊值**: 支持 `Infinity`, `-Infinity`, `NaN`
 
+## 文件图标
+
+插件为不同类型的文件提供专属图标：
+
+- **`.ets` 文件**: 黄色 ETS 图标
+- **`.test.ets` 文件**: 绿色 ETS 图标（测试文件专用）
+- **`.json5` 文件**: JSON5 专用图标
+
+测试文件使用绿色图标，便于在文件浏览器中快速识别测试代码。
+
 ## 安装
 
 ### 从 VSCode Marketplace 安装（推荐）
@@ -70,7 +81,7 @@
 
 ## 使用
 
-安装插件后，打开 `.ets` 文件即可看到 ArkTS 语法高亮效果，打开 `.json5` 文件即可看到 JSON5 语法高亮效果。
+安装插件后，打开 `.ets` 文件即可看到 ArkTS 语法高亮效果，打开 `.test.ets` 文件即可看到测试文件的绿色图标和语法高亮，打开 `.json5` 文件即可看到 JSON5 语法高亮效果。
 
 ### ArkTS 示例代码
 
@@ -91,6 +102,22 @@ struct Index {
         }
         .height('100%')
     }
+}
+```
+
+### ArkTS 测试文件示例
+
+测试文件使用 `.test.ets` 扩展名，插件会为其显示绿色图标：
+
+```arkts
+import { describe, it, expect } from '@ohos/hypium';
+
+export default function indexTest() {
+  describe('Index', function () {
+    it('should pass', function () {
+      expect(1 + 1).assertEqual(2);
+    });
+  });
 }
 ```
 
@@ -177,7 +204,7 @@ pnpm run watch
 
 ### 调试
 1. 按 `F5` 启动扩展开发主机
-2. 在新打开的 VSCode 窗口中打开 `.ets` 或 `.json5` 文件测试
+2. 在新打开的 VSCode 窗口中打开 `.ets`、`.test.ets` 或 `.json5` 文件测试
 
 ## 项目结构
 
@@ -193,6 +220,11 @@ better-arkts/
 │   ├── test.ets
 │   └── test.json5
 ├── icons/                # 图标文件
+│   ├── ets.svg           # 普通 .ets 文件图标（黄色）
+│   ├── test.ets.svg      # 测试 .ets 文件图标（绿色）
+│   ├── json5.svg
+│   ├── arkts.svg
+│   └── arkts_icon.png
 ├── package.json          # 插件配置
 ├── tsconfig.json         # TypeScript 配置
 ├── language-configuration.json  # ArkTS 语言配置
@@ -205,7 +237,7 @@ better-arkts/
 - **开发语言**: TypeScript
 - **插件框架**: VSCode Extension API
 - **语法高亮**: TextMate 语法 (tmLanguage)
-- **文件扩展名**: `.ets` (ArkTS), `.json5` (JSON5)
+- **文件扩展名**: `.ets` (ArkTS), `.test.ets` (ArkTS 测试文件), `.json5` (JSON5)
 
 ## 与 TypeScript 的差异
 
@@ -227,6 +259,16 @@ JSON5 是 JSON 的扩展，主要差异包括：
 - 允许对象和数组末尾的尾随逗号
 - 支持十六进制、八进制、二进制数字
 - 支持 `Infinity`, `-Infinity`, `NaN` 等特殊值
+
+## 更新日志
+
+### v0.0.4
+- ✨ 新增 `.test.ets` 测试文件图标支持（绿色图标）
+- 🎨 测试文件使用独立图标，便于区分
+
+### v0.0.3
+- 初始版本
+- 支持 ArkTS 和 JSON5 语法高亮
 
 ## 贡献
 
