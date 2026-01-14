@@ -1,0 +1,179 @@
+{
+  "scopeName": "source.hml",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#tags"
+    },
+    {
+      "include": "#attributes"
+    },
+    {
+      "include": "#data-binding"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.block.html.hml",
+          "begin": "<!--",
+          "end": "-->",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.comment.hml"
+            }
+          }
+        }
+      ]
+    },
+    "tags": {
+      "patterns": [
+        {
+          "name": "meta.tag.any.hml",
+          "begin": "(</?)([a-zA-Z][a-zA-Z0-9-]*)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.begin.hml"
+            },
+            "2": {
+              "name": "entity.name.tag.hml"
+            }
+          },
+          "end": "(>)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.end.hml"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#attributes"
+            }
+          ]
+        },
+        {
+          "name": "meta.tag.self-closing.hml",
+          "begin": "(</?)([a-zA-Z][a-zA-Z0-9-]*)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.begin.hml"
+            },
+            "2": {
+              "name": "entity.name.tag.hml"
+            }
+          },
+          "end": "(/>)",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.tag.end.hml"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#attributes"
+            }
+          ]
+        }
+      ]
+    },
+    "attributes": {
+      "patterns": [
+        {
+          "name": "entity.other.attribute-name.event.hml",
+          "match": "\\b(onclick|onlongpress|onchange|onsubmit|onrefresh|onfocus|onblur|onappear|ondisappear)\\b"
+        },
+        {
+          "name": "keyword.control.directive.hml",
+          "match": "\\b(if|else|for|show)\\b"
+        },
+        {
+          "name": "entity.other.attribute-name.hml",
+          "match": "\\b[a-zA-Z-]+\\b(?=\\s*=)"
+        },
+        {
+          "include": "#attribute-values"
+        }
+      ]
+    },
+    "attribute-values": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.hml",
+          "begin": "\"",
+          "end": "\"",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.hml"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.hml"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#data-binding"
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.hml",
+          "begin": "'",
+          "end": "'",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.hml"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.hml"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#data-binding"
+            }
+          ]
+        }
+      ]
+    },
+    "data-binding": {
+      "patterns": [
+        {
+          "name": "meta.embedded.expression.hml",
+          "begin": "\\{\\{",
+          "end": "\\}\\}",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.expression.begin.hml"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.expression.end.hml"
+            }
+          },
+          "patterns": [
+            {
+              "name": "variable.other.readwrite.hml",
+              "match": "[a-zA-Z_][a-zA-Z0-9_]*"
+            },
+            {
+              "name": "keyword.operator.hml",
+              "match": "\\+|\\-|\\*|\\/|%|==|!=|>|<|>=|<=|&&|\\|\\||!"
+            },
+            {
+              "name": "constant.numeric.hml",
+              "match": "\\b\\d+(\\.\\d+)?\\b"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

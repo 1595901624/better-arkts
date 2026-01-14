@@ -1,0 +1,222 @@
+<!-- HML 语法高亮测试文件 -->
+
+<!-- 基础标签和属性 -->
+<div class="container" id="main-container" style="background-color: #F1F3F5;">
+  <text class="title-text">HML 语法高亮测试</text>
+</div>
+
+<!-- 数据绑定 -->
+<div class="info">
+  <text>{{message}}</text>
+  <text>计数: {{count}}</text>
+  <text>价格: {{price}} 元</text>
+</div>
+
+<!-- 事件处理 -->
+<div class="button-container">
+  <button onclick="handleClick">点击我</button>
+  <button onlongpress="handleLongPress">长按我</button>
+</div>
+
+<!-- 条件渲染 -->
+<div if="{{showContent}}">
+  <text>这是显示的内容</text>
+</div>
+<div else>
+  <text>这是隐藏的内容</text>
+</div>
+
+<!-- 列表渲染 -->
+<div class="list">
+  <div for="item in items" class="list-item">
+    <text>{{item.name}}</text>
+    <text>{{item.value}}</text>
+  </div>
+</div>
+
+<!-- 输入组件 -->
+<div class="input-container">
+  <input type="text" placeholder="请输入内容" onchange="handleInputChange"></input>
+  <textarea placeholder="多行文本输入" onchange="handleTextareaChange"></textarea>
+  <search hint="搜索" onsubmit="handleSearch"></search>
+</div>
+
+<!-- 选择器 -->
+<div class="select-container">
+  <select onchange="handleSelectChange">
+    <option value="option1">选项1</option>
+    <option value="option2">选项2</option>
+    <option value="option3">选项3</option>
+  </select>
+</div>
+
+<!-- 图片组件 -->
+<div class="image-container">
+  <image src="common/images/logo.png" style="object-fit: contain;"></image>
+</div>
+
+<!-- 滑块和开关 -->
+<div class="controls">
+  <slider min="0" max="100" value="{{sliderValue}}" onchange="handleSliderChange"></slider>
+  <switch checked="{{isSwitchOn}}" onchange="handleSwitchChange"></switch>
+</div>
+
+<!-- 复选框和单选框 -->
+<div class="checkbox-container">
+  <checkbox checked="{{isChecked}}" onchange="handleCheckboxChange">同意条款</checkbox>
+  <radio value="option1" checked="{{isRadio1Checked}}">选项1</radio>
+  <radio value="option2" checked="{{isRadio2Checked}}">选项2</radio>
+</div>
+
+<!-- 布局组件 -->
+<div class="layout-container">
+  <stack>
+    <text>Stack 布局</text>
+  </stack>
+  <flex direction="row">
+    <text>Flex 布局</text>
+  </flex>
+  <grid-container columns="3">
+    <grid-row>
+      <grid-col span="1">
+        <text>Grid 1</text>
+      </grid-col>
+      <grid-col span="1">
+        <text>Grid 2</text>
+      </grid-col>
+      <grid-col span="1">
+        <text>Grid 3</text>
+      </grid-col>
+    </grid-row>
+  </grid-container>
+</div>
+
+<!-- 列表组件 -->
+<list class="my-list">
+  <list-item for="item in listData">
+    <text>{{item.title}}</text>
+  </list-item>
+</list>
+
+<!-- 标签页组件 -->
+<tabs class="tabs" onchange="handleTabChange">
+  <tab-bar class="tabBar">
+    <text class="tabBarItem">首页</text>
+    <text class="tabBarItem">发现</text>
+    <text class="tabBarItem">我的</text>
+  </tab-bar>
+  <tab-content class="tabContent">
+    <div>
+      <text>首页内容</text>
+    </div>
+    <div>
+      <text>发现内容</text>
+    </div>
+    <div>
+      <text>我的内容</text>
+    </div>
+  </tab-content>
+</tabs>
+
+<!-- 滚动容器 -->
+<scroll class="scroll-container">
+  <div style="height: 1000px;">
+    <text>可滚动内容</text>
+  </div>
+</scroll>
+
+<!-- 轮播组件 -->
+<swiper class="swiper" autoplay="true" interval="3000">
+  <div class="swiper-item">
+    <image src="common/images/slide1.jpg"></image>
+  </div>
+  <div class="swiper-item">
+    <image src="common/images/slide2.jpg"></image>
+  </div>
+</swiper>
+
+<!-- 下拉刷新 -->
+<refresh refreshing="{{isRefreshing}}" onrefresh="handleRefresh">
+  <div class="content">
+    <text>下拉刷新内容</text>
+  </div>
+</refresh>
+
+<!-- SVG 组件 -->
+<svg width="300" height="300">
+  <circle cx="150" cy="150" r="50" fill="red" stroke="black" stroke-width="2">
+    <animate attributeName="r" from="50" to="80" dur="2s" repeatCount="indefinite"></animate>
+  </circle>
+  <rect x="50" y="50" width="100" height="100" fill="blue">
+    <animate attributeName="fill" from="blue" to="green" dur="3s" repeatCount="indefinite"></animate>
+  </rect>
+  <line x1="0" y1="0" x2="300" y2="300" stroke="black" stroke-width="2">
+    <animateTransform attributeName="transform" type="rotate" from="0 150 150" to="360 150 150" dur="5s" repeatCount="indefinite"></animateTransform>
+  </line>
+</svg>
+
+<!-- 嵌套标签 -->
+<div class="nested-container">
+  <div class="outer">
+    <div class="middle">
+      <div class="inner">
+        <text>深层嵌套文本</text>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 自闭合标签 -->
+<div class="self-closing">
+  <input type="text" placeholder="自闭合输入框" />
+  <image src="common/images/icon.png" />
+  <slider min="0" max="100" value="50" />
+</div>
+
+<!-- 多个属性 -->
+<div class="multi-attr" id="test-id" name="test-name" value="test-value" disabled="true" focusable="true">
+  <text>多属性测试</text>
+</div>
+
+<!-- 表达式绑定 -->
+<div class="expression">
+  <text>{{a + b}}</text>
+  <text>{{count * 2}}</text>
+  <text>{{name + ' ' + surname}}</text>
+  <text>{{isActive ? '激活' : '未激活'}}</text>
+</div>
+
+<!-- show 指令 -->
+<div show="{{isVisible}}">
+  <text>使用 show 指令显示</text>
+</div>
+
+<!-- 事件属性 -->
+<div class="events">
+  <button onclick="clickHandler">点击</button>
+  <button onlongpress="longPressHandler">长按</button>
+  <input onchange="changeHandler" />
+  <search onsubmit="submitHandler" />
+  <div onfocus="focusHandler" onblur="blurHandler">
+    <text>焦点事件</text>
+  </div>
+</div>
+
+<!-- 完整的页面结构示例 -->
+<div class="page-container">
+  <!-- 头部 -->
+  <div class="header">
+    <text class="header-title">标题</text>
+  </div>
+
+  <!-- 内容区域 -->
+  <div class="content">
+    <text class="content-text">内容</text>
+    <button onclick="handleAction">操作</button>
+  </div>
+
+  <!-- 底部 -->
+  <div class="footer">
+    <text class="footer-text">底部</text>
+  </div>
+</div>

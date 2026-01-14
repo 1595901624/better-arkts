@@ -1,8 +1,8 @@
 {
   "name": "better-arkts",
   "displayName": "Better ArkTS Syntax Highlighting",
-  "description": "(非官方) ArkTS 语法高亮支持插件，为 HarmonyOS/OpenHarmony 开发提供语法高亮功能，同时支持 JSON5 语法",
-  "version": "0.0.4",
+  "description": "(非官方) ArkTS 语法高亮支持插件，为 HarmonyOS/OpenHarmony 开发提供语法高亮功能，同时支持 JSON5 和 HML 语法",
+  "version": "0.0.5",
   "publisher": "cloris",
   "icon": "icons/arkts_icon.png",
   "engines": {
@@ -24,7 +24,8 @@
     "arkui",
     "syntax",
     "highlighting",
-    "json5"
+    "json5",
+    "hml"
   ],
   "contributes": {
     "languages": [
@@ -75,6 +76,23 @@
           "dark": "./icons/json5.svg"
         },
         "configuration": "./language-configuration-json5.json"
+      },
+      {
+        "id": "hml",
+        "aliases": [
+          "HML",
+          "hml",
+          "HarmonyOS Markup Language"
+        ],
+        "extensions": [
+          ".hml"
+        ],
+        "icon": {
+          "id": "hml-icon",
+          "light": "./icons/hml.svg",
+          "dark": "./icons/hml.svg"
+        },
+        "configuration": "./language-configuration-hml.json"
       }
     ],
     "grammars": [
@@ -92,6 +110,11 @@
         "language": "json5",
         "scopeName": "source.json5",
         "path": "./syntaxes/json5.tmLanguage.json"
+      },
+      {
+        "language": "hml",
+        "scopeName": "source.hml",
+        "path": "./syntaxes/hml.tmLanguage.json"
       }
     ],
     "icons": {
@@ -108,18 +131,27 @@
           "fontPath": "./icons/arkts.woff",
           "fontCharacter": "\\E002"
         }
+      },
+      "hml-icon": {
+        "description": "HML File Icon",
+        "default": {
+          "fontPath": "./icons/arkts.woff",
+          "fontCharacter": "\\E003"
+        }
       }
     },
     "files.associations": {
       "*.ets": "arkts",
       "*.test.ets": "arkts-test",
-      "*.json5": "json5"
+      "*.json5": "json5",
+      "*.hml": "hml"
     }
   },
   "activationEvents": [
     "onLanguage:arkts",
     "onLanguage:arkts-test",
-    "onLanguage:json5"
+    "onLanguage:json5",
+    "onLanguage:hml"
   ],
   "main": "./out/extension.js",
   "scripts": {

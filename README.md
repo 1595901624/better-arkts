@@ -1,11 +1,12 @@
 # Better ArkTS 语法高亮插件
 
-(非官方)为 VSCode 提供 ARKTS 和 JSON5 语言语法高亮支持的插件。
+(非官方)为 VSCode 提供 ARKTS、JSON5 和 HML 语言语法高亮支持的插件。
 
 ## 功能特性
 
 - ✅ **ArkTS 语法高亮**: 为 ARKTS 代码提供完整的语法高亮
 - ✅ **JSON5 语法高亮**: 为 JSON5 文件提供完整的语法高亮
+- ✅ **HML 语法高亮**: 为 HML (HarmonyOS Markup Language) 文件提供完整的语法高亮
 - ✅ **测试文件图标支持**: 为 `.test.ets` 测试文件提供独立的绿色图标，便于区分测试文件
 - ✅ **装饰器支持**: 高亮 ArkUI 装饰器（@Entry, @Component, @State 等）
 - ✅ **关键字高亮**: 支持 ARKTS 所有关键字
@@ -13,7 +14,7 @@
 - ✅ **字符串和数字**: 支持单引号、双引号、模板字符串和各种数字格式
 - ✅ **注释支持**: 单行注释（//）和多行注释（/* */）
 - ✅ **函数高亮**: 函数声明和调用高亮
-- ✅ **文件关联**: 自动识别 `.ets` 文件为 ARKTS 语言，`.test.ets` 文件为 ArkTS 测试语言，`.json5` 文件为 JSON5 语言
+- ✅ **文件关联**: 自动识别 `.ets` 文件为 ARKTS 语言，`.test.ets` 文件为 ArkTS 测试语言，`.json5` 文件为 JSON5 语言，`.hml` 文件为 HML 语言
 
 ## 支持的语法元素
 
@@ -45,6 +46,21 @@
 - 基础组件: `Text`, `Image`, `Button`, `TextInput`, `Slider`, `Toggle`
 - 容器组件: `Scroll`, `Swiper`, `Navigator`, `Web`
 
+### HML 组件
+- **布局组件**: `div`, `stack`, `flex`, `grid-container`, `grid-row`, `grid-col`, `list`, `list-item`, `tabs`, `tab-bar`, `tab-content`, `swiper`
+- **基础组件**: `text`, `image`, `button`, `input`, `textarea`, `search`, `picker`, `slider`, `switch`, `checkbox`, `radio`, `option`, `select`
+- **容器组件**: `scroll`, `navigator`, `web`, `refresh`
+- **SVG 组件**: `svg`, `line`, `circle`, `rect`, `path`, `polygon`, `polyline`, `ellipse`, `animate`, `animateTransform`
+
+### HML 语法特性
+- **标签高亮**: 所有 HML 标签名称高亮显示
+- **属性高亮**: 属性名称和属性值高亮显示
+- **数据绑定**: `{{...}}` 表达式高亮显示
+- **事件属性**: `onclick`, `onchange`, `onsubmit` 等事件属性特殊高亮
+- **特殊指令**: `if`, `else`, `for`, `show` 等指令高亮显示
+- **注释支持**: HTML 风格注释 `<!-- -->`
+- **字符串支持**: 单引号和双引号字符串
+
 ### JSON5 特性
 - **注释支持**: 单行注释 (`//`) 和多行注释 (`/* */`)
 - **灵活的键名**: 可以使用无引号的键名
@@ -60,6 +76,7 @@
 - **`.ets` 文件**: 黄色 ETS 图标
 - **`.test.ets` 文件**: 绿色 ETS 图标（测试文件专用）
 - **`.json5` 文件**: JSON5 专用图标
+- **`.hml` 文件**: HML 专用图标（绿色）
 
 测试文件使用绿色图标，便于在文件浏览器中快速识别测试代码。
 
@@ -81,7 +98,7 @@
 
 ## 使用
 
-安装插件后，打开 `.ets` 文件即可看到 ArkTS 语法高亮效果，打开 `.test.ets` 文件即可看到测试文件的绿色图标和语法高亮，打开 `.json5` 文件即可看到 JSON5 语法高亮效果。
+安装插件后，打开 `.ets` 文件即可看到 ArkTS 语法高亮效果，打开 `.test.ets` 文件即可看到测试文件的绿色图标和语法高亮，打开 `.json5` 文件即可看到 JSON5 语法高亮效果，打开 `.hml` 文件即可看到 HML 语法高亮效果。
 
 ### ArkTS 示例代码
 
@@ -121,6 +138,76 @@ export default function indexTest() {
 }
 ```
 
+### HML 示例代码
+
+```html
+<!-- xxx.hml -->
+<div class="container" style="background-color: #F1F3F5;">
+  <!-- 数据绑定 -->
+  <text class="title-text">{{title}}</text>
+  <text>计数: {{count}}</text>
+
+  <!-- 事件处理 -->
+  <button onclick="handleClick">点击我</button>
+  <button onlongpress="handleLongPress">长按我</button>
+
+  <!-- 条件渲染 -->
+  <div if="{{showContent}}">
+    <text>这是显示的内容</text>
+  </div>
+  <div else>
+    <text>这是隐藏的内容</text>
+  </div>
+
+  <!-- 列表渲染 -->
+  <div class="list">
+    <div for="item in items" class="list-item">
+      <text>{{item.name}}</text>
+      <text>{{item.value}}</text>
+    </div>
+  </div>
+
+  <!-- 输入组件 -->
+  <input type="text" placeholder="请输入内容" onchange="handleInputChange"></input>
+  <textarea placeholder="多行文本输入" onchange="handleTextareaChange"></textarea>
+  <search hint="搜索" onsubmit="handleSearch"></search>
+
+  <!-- 图片组件 -->
+  <image src="common/images/logo.png" style="object-fit: contain;"></image>
+
+  <!-- 滑块和开关 -->
+  <slider min="0" max="100" value="{{sliderValue}}" onchange="handleSliderChange"></slider>
+  <switch checked="{{isSwitchOn}}" onchange="handleSwitchChange"></switch>
+
+  <!-- 标签页 -->
+  <tabs class="tabs" onchange="handleTabChange">
+    <tab-bar class="tabBar">
+      <text class="tabBarItem">首页</text>
+      <text class="tabBarItem">发现</text>
+      <text class="tabBarItem">我的</text>
+    </tab-bar>
+    <tab-content class="tabContent">
+      <div>
+        <text>首页内容</text>
+      </div>
+      <div>
+        <text>发现内容</text>
+      </div>
+      <div>
+        <text>我的内容</text>
+      </div>
+    </tab-content>
+  </tabs>
+
+  <!-- SVG 组件 -->
+  <svg width="300" height="300">
+    <circle cx="150" cy="150" r="50" fill="red">
+      <animate attributeName="r" from="50" to="80" dur="2s" repeatCount="indefinite"></animate>
+    </circle>
+  </svg>
+</div>
+```
+
 ### JSON5 示例代码
 
 ```json5
@@ -140,11 +227,12 @@ export default function indexTest() {
   keywords: [
     "arkts",
     "json5",
+    "hml",
     "syntax",
   ],
 
   // 支持单引号字符串
-  description: 'JSON5 配置文件示例',
+  description: 'Better ArkTS 配置文件示例',
   
   // 支持多行字符串
   multiLineString: '''
@@ -204,7 +292,7 @@ pnpm run watch
 
 ### 调试
 1. 按 `F5` 启动扩展开发主机
-2. 在新打开的 VSCode 窗口中打开 `.ets`、`.test.ets` 或 `.json5` 文件测试
+2. 在新打开的 VSCode 窗口中打开 `.ets`、`.test.ets`、`.json5` 或 `.hml` 文件测试
 
 ## 项目结构
 
@@ -213,22 +301,26 @@ better-arkts/
 ├── .vscode/              # VSCode 配置
 ├── syntaxes/             # TextMate 语法文件
 │   ├── arkts.tmLanguage.json
-│   └── json5.tmLanguage.json
+│   ├── json5.tmLanguage.json
+│   └── hml.tmLanguage.json
 ├── src/                  # 源代码
 │   └── extension.ts
 ├── test/                 # 测试文件
 │   ├── test.ets
-│   └── test.json5
+│   ├── test.json5
+│   └── test.hml
 ├── icons/                # 图标文件
 │   ├── ets.svg           # 普通 .ets 文件图标（黄色）
 │   ├── test.ets.svg      # 测试 .ets 文件图标（绿色）
 │   ├── json5.svg
+│   ├── hml.svg           # HML 文件图标（绿色）
 │   ├── arkts.svg
 │   └── arkts_icon.png
 ├── package.json          # 插件配置
 ├── tsconfig.json         # TypeScript 配置
 ├── language-configuration.json  # ArkTS 语言配置
 ├── language-configuration-json5.json  # JSON5 语言配置
+├── language-configuration-hml.json    # HML 语言配置
 └── README.md             # 说明文档
 ```
 
@@ -237,7 +329,7 @@ better-arkts/
 - **开发语言**: TypeScript
 - **插件框架**: VSCode Extension API
 - **语法高亮**: TextMate 语法 (tmLanguage)
-- **文件扩展名**: `.ets` (ArkTS), `.test.ets` (ArkTS 测试文件), `.json5` (JSON5)
+- **文件扩展名**: `.ets` (ArkTS), `.test.ets` (ArkTS 测试文件), `.json5` (JSON5), `.hml` (HML)
 
 ## 与 TypeScript 的差异
 
@@ -260,7 +352,25 @@ JSON5 是 JSON 的扩展，主要差异包括：
 - 支持十六进制、八进制、二进制数字
 - 支持 `Infinity`, `-Infinity`, `NaN` 等特殊值
 
+## HML 语法特性
+
+HML (HarmonyOS Markup Language) 是 HarmonyOS 的声明式 UI 语言，主要特性包括：
+
+- **声明式语法**: 使用类似 HTML 的标签语法构建 UI
+- **数据绑定**: 使用 `{{}}` 语法绑定数据
+- **事件处理**: 支持多种事件属性（onclick, onchange 等）
+- **条件渲染**: 支持 `if`/`else` 指令
+- **列表渲染**: 支持 `for` 指令
+- **内置组件**: 丰富的布局和基础组件
+- **SVG 支持**: 支持 SVG 图形和动画
+
 ## 更新日志
+
+### v0.0.5
+- ✨ 新增 HML 语法高亮支持
+- 🎨 添加 HML 文件图标（绿色）
+- 📝 完善 HML 语法规则，支持标签、属性、数据绑定等
+- 📚 更新文档，添加 HML 示例和说明
 
 ### v0.0.4
 - ✨ 新增 `.test.ets` 测试文件图标支持（绿色图标）
@@ -282,4 +392,5 @@ MIT License
 
 - [ArkTS 语言指南](https://developer.huawei.com/consumer/cn/arkts/)
 - [ArkUI 组件文档](https://developer.huawei.com/consumer/cn/doc/HarmonyOS-Guides/arkui-overview)
+- [HML 开发指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-get-started)
 - [JSON5 规范](https://json5.org/)
