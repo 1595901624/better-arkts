@@ -2,7 +2,7 @@
   "name": "better-arkts",
   "displayName": "Better ArkTS Syntax Highlighting",
   "description": "(非官方) ArkTS 语法高亮支持插件，为 HarmonyOS/OpenHarmony 开发提供语法高亮功能，同时支持 JSON5 语法",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "cloris",
   "icon": "icons/arkts_icon.png",
   "engines": {
@@ -45,6 +45,22 @@
         "configuration": "./language-configuration.json"
       },
       {
+        "id": "arkts-test",
+        "aliases": [
+          "ArkTS Test",
+          "arkts-test"
+        ],
+        "extensions": [
+          ".test.ets"
+        ],
+        "icon": {
+          "id": "arkts-test-icon",
+          "light": "./icons/test.ets.svg",
+          "dark": "./icons/test.ets.svg"
+        },
+        "configuration": "./language-configuration.json"
+      },
+      {
         "id": "json5",
         "aliases": [
           "JSON5",
@@ -68,6 +84,11 @@
         "path": "./syntaxes/arkts.tmLanguage.json"
       },
       {
+        "language": "arkts-test",
+        "scopeName": "source.arkts",
+        "path": "./syntaxes/arkts.tmLanguage.json"
+      },
+      {
         "language": "json5",
         "scopeName": "source.json5",
         "path": "./syntaxes/json5.tmLanguage.json"
@@ -80,15 +101,24 @@
           "fontPath": "./icons/arkts.woff",
           "fontCharacter": "\\E001"
         }
+      },
+      "arkts-test-icon": {
+        "description": "ArkTS Test File Icon",
+        "default": {
+          "fontPath": "./icons/arkts.woff",
+          "fontCharacter": "\\E002"
+        }
       }
     },
     "files.associations": {
       "*.ets": "arkts",
+      "*.test.ets": "arkts-test",
       "*.json5": "json5"
     }
   },
   "activationEvents": [
     "onLanguage:arkts",
+    "onLanguage:arkts-test",
     "onLanguage:json5"
   ],
   "main": "./out/extension.js",
