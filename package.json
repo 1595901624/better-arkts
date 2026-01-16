@@ -2,7 +2,7 @@
   "name": "better-arkts",
   "displayName": "Better ArkTS Syntax Highlighting",
   "description": "(非官方) ArkTS 语法高亮支持插件，为 HarmonyOS/OpenHarmony 开发提供语法高亮功能，同时支持 JSON5 和 HML 语法",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "publisher": "cloris",
   "icon": "icons/arkts_icon.png",
   "engines": {
@@ -145,6 +145,16 @@
       "*.test.ets": "arkts-test",
       "*.json5": "json5",
       "*.hml": "hml"
+    },
+    "configuration": {
+      "title": "Better ArkTS",
+      "properties": {
+        "better-arkts.experimental.hmlFormat.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "启用实验性的 HML 格式化功能"
+        }
+      }
     }
   },
   "activationEvents": [

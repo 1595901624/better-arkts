@@ -7,6 +7,7 @@
 - ✅ **ArkTS 语法高亮**: 为 ARKTS 代码提供完整的语法高亮
 - ✅ **JSON5 语法高亮**: 为 JSON5 文件提供完整的语法高亮
 - ✅ **HML 语法高亮**: 为 HML (HarmonyOS Markup Language) 文件提供完整的语法高亮
+- ✅ **HML 格式化**: 支持 HML 文件格式化（实验性），默认关闭。配置项："better-arkts.experimental.hmlFormat.enabled": false
 - ✅ **测试文件图标支持**: 为 `.test.ets` 测试文件提供独立的绿色图标，便于区分测试文件
 - ✅ **装饰器支持**: 高亮 ArkUI 装饰器（@Entry, @Component, @State 等）
 - ✅ **关键字高亮**: 支持 ARKTS 所有关键字
