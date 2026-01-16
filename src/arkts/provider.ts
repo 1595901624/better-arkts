@@ -8,7 +8,7 @@ export class ArkTSFormattingProvider implements vscode.DocumentFormattingEditPro
         options: vscode.FormattingOptions
     ): vscode.TextEdit[] {
         const text = document.getText();
-        
+
         const hasComplexSyntax = this.detectComplexSyntax(text);
         if (hasComplexSyntax) {
             return this.formatWithBasicRules(document, options);
@@ -28,7 +28,7 @@ export class ArkTSFormattingProvider implements vscode.DocumentFormattingEditPro
         };
 
         const formatted = formatDocument(ast, formatOptions);
-        
+
         if (this.hasFormattingIssues(text, formatted)) {
             return this.formatWithBasicRules(document, options);
         }
@@ -48,7 +48,7 @@ export class ArkTSFormattingProvider implements vscode.DocumentFormattingEditPro
             /\bset\s+\w+\s*\(/,
             /struct\s+\w+[^{]*\{[^}]*\b(enum|interface|class|function)\b/s,
         ];
-        
+
         return patterns.some(p => p.test(text));
     }
 
@@ -75,7 +75,7 @@ export class ArkTSFormattingProvider implements vscode.DocumentFormattingEditPro
         const text = document.getText();
         const eol = document.eol === vscode.EndOfLine.LF ? '\n' : '\r\n';
         const indentStr = options.insertSpaces ? ' '.repeat(options.tabSize) : '\t';
-        
+
         const lines = text.split(/\r?\n/);
         const result: string[] = [];
         let currentIndent = 0;
@@ -83,7 +83,7 @@ export class ArkTSFormattingProvider implements vscode.DocumentFormattingEditPro
 
         for (const line of lines) {
             const trimmed = line.trim();
-            
+
             if (!trimmed) {
                 if (!lastWasEmpty) {
                     result.push('');
@@ -117,7 +117,7 @@ export class ArkTSFormattingProvider implements vscode.DocumentFormattingEditPro
         }
 
         const formatted = result.join(eol) + eol;
-        
+
         if (formatted === text) {
             return [];
         }
