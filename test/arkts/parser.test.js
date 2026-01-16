@@ -24,8 +24,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const assert = __importStar(require("assert"));
-const parser_1 = require("../../src/arkts/parser");
-const formatter_1 = require("../../src/arkts/formatter");
+const fs = __importStar(require("fs"));
+const path = __importStar(require("path"));
+const parser_1 = require("../../out/arkts/parser");
+const formatter_1 = require("../../out/arkts/formatter");
 describe('ArkTS Parser', () => {
     it('should parse a simple struct with decorators', () => {
         const code = `
@@ -132,5 +134,15 @@ struct MyDialog {
         assert.ok(formatted.includes('@CustomDialog'));
         assert.ok(formatted.includes("@Preview({ title: 'Test' })"));
     });
+
+      it('should be idempotent for sample.ets', () => {
+        const samplePath = path.join(__dirname, 'sample.ets');
+        const sample = fs.readFileSync(samplePath, 'utf8');
+        const parser = new parser_1.ArkTSParser(sample);
+        const doc = parser.parseDocument();
+        assert.strictEqual(parser.errors.length, 0);
+        const formatted = (0, formatter_1.formatDocument)(doc, formatter_1.DEFAULT_FORMAT_OPTIONS);
+        assert.strictEqual(formatted, sample);
+      });
 });
 //# sourceMappingURL=parser.test.js.map

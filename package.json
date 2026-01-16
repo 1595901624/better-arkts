@@ -175,7 +175,7 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "test": "mocha test/**/*.test.js"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",
@@ -183,6 +183,7 @@
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
     "eslint": "^8.28.0",
+    "mocha": "^10.2.0",
     "typescript": "^4.9.4"
   }
 }
