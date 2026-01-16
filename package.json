@@ -153,6 +153,31 @@
           "type": "boolean",
           "default": false,
           "description": "启用实验性的 HML 格式化功能"
+        },
+        "better-arkts.experimental.arktsFormat.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "启用实验性的 ArkTS (.ets) 格式化功能"
+        },
+        "better-arkts.format.indentSize": {
+          "type": "number",
+          "default": 2,
+          "description": "格式化时的缩进大小"
+        },
+        "better-arkts.format.singleQuote": {
+          "type": "boolean",
+          "default": true,
+          "description": "使用单引号而不是双引号"
+        },
+        "better-arkts.format.semicolon": {
+          "type": "boolean",
+          "default": true,
+          "description": "在语句末尾添加分号"
+        },
+        "better-arkts.format.trailingComma": {
+          "type": "boolean",
+          "default": false,
+          "description": "在多行结构末尾添加逗号"
         }
       }
     }
