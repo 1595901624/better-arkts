@@ -1,6 +1,5 @@
 import * as vscode from 'vscode';
 import { HmlFormattingProvider } from './hml/provider';
-import { ArkTSFormattingProvider } from './arkts/provider';
 
 /**
  * 插件激活函数
@@ -31,23 +30,6 @@ export function activate(context: vscode.ExtensionContext) {
     const updateArkTSFormattingProvider = () => {
         const config = vscode.workspace.getConfiguration('better-arkts');
         const enabled = config.get<boolean>('experimental.arktsFormat.enabled', false);
-        if (enabled && !arktsFormattingDisposable) {
-            arktsFormattingDisposable = vscode.languages.registerDocumentFormattingEditProvider(
-                'arkts',
-                new ArkTSFormattingProvider()
-            );
-            context.subscriptions.push(arktsFormattingDisposable);
-
-            const arktsTestDisposable = vscode.languages.registerDocumentFormattingEditProvider(
-                'arkts-test',
-                new ArkTSFormattingProvider()
-            );
-            context.subscriptions.push(arktsTestDisposable);
-        }
-        if (!enabled && arktsFormattingDisposable) {
-            arktsFormattingDisposable.dispose();
-            arktsFormattingDisposable = undefined;
-        }
     };
 
     updateHmlFormattingProvider();
