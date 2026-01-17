@@ -1,6 +1,5 @@
 import * as vscode from 'vscode';
 import { HmlFormattingProvider } from './hml/provider';
-import { ArkTSFormattingProvider } from './arkts/provider';
 
 /**
  * 插件激活函数
@@ -11,7 +10,6 @@ export function activate(context: vscode.ExtensionContext) {
 
     let hmlFormattingDisposable: vscode.Disposable | undefined;
     let arktsFormattingDisposable: vscode.Disposable | undefined;
-    let arktsTestFormattingDisposable: vscode.Disposable | undefined;
 
     const updateHmlFormattingProvider = () => {
         const config = vscode.workspace.getConfiguration('better-arkts');
@@ -32,31 +30,6 @@ export function activate(context: vscode.ExtensionContext) {
     const updateArkTSFormattingProvider = () => {
         const config = vscode.workspace.getConfiguration('better-arkts');
         const enabled = config.get<boolean>('experimental.arktsFormat.enabled', false);
-
-        if (enabled && !arktsFormattingDisposable) {
-            const provider = new ArkTSFormattingProvider();
-            arktsFormattingDisposable = vscode.languages.registerDocumentFormattingEditProvider(
-                'arkts',
-                provider
-            );
-            context.subscriptions.push(arktsFormattingDisposable);
-
-            arktsTestFormattingDisposable = vscode.languages.registerDocumentFormattingEditProvider(
-                'arkts-test',
-                provider
-            );
-            context.subscriptions.push(arktsTestFormattingDisposable);
-        }
-
-        if (!enabled && arktsFormattingDisposable) {
-            arktsFormattingDisposable.dispose();
-            arktsFormattingDisposable = undefined;
-        }
-
-        if (!enabled && arktsTestFormattingDisposable) {
-            arktsTestFormattingDisposable.dispose();
-            arktsTestFormattingDisposable = undefined;
-        }
     };
 
     updateHmlFormattingProvider();
